@@ -5,12 +5,12 @@
 --@param table A table.
 --@usage isOneOf(2, {1, 2, 3, 4, 5})
 function isOneOf(element, table)
-  	for k, v in ipairs(table) do
-    	if v == element then
-	      	return true
-    	end
-  	end
-  	return false
+	for k, v in ipairs(table) do
+		if v == element then
+			return true
+		end
+	end
+	return false
 end
 
 --- Find path between cells of the same cellular space.

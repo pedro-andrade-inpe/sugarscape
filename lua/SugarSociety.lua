@@ -18,14 +18,14 @@ function SugarSociety (model)
 				greater = greaterByAttribute("wealth")
 			}
 
-	    	local top = 0
-	    	local bot = 0
-	    	local num = #self
+			local top = 0
+			local bot = 0
+			local num = #self
 			forEachAgent(g, function(agent, i)
-        		top = top + (num + 1 - i) * agent.wealth
-        		bot = bot + agent.wealth
-    		end)
-    		return (num + 1 - 2 * (top / bot)) / num
+				top = top + (num + 1 - i) * agent.wealth
+				bot = bot + agent.wealth
+			end)
+			return (num + 1 - 2 * (top / bot)) / num
 		end,
 		--- Save the distribution of agents in a csv file.
 		--@param filename Name of the file to be saved.
@@ -36,13 +36,13 @@ function SugarSociety (model)
 				greater = greaterByAttribute("wealth")
 			}
 
-    		fh = io.open (filename, "w")
+			fh = io.open (filename, "w")
 
-    		fh:write("x, y","\n")
+			fh:write("x, y","\n")
 			forEachAgent(g, function(agent, i)
-    		    fh:write(i, ", ", agent.wealth,"\n")
+				fh:write(i, ", ", agent.wealth,"\n")
 			end)
-    		fh:close()
+			fh:close()
 		end
 	}
 

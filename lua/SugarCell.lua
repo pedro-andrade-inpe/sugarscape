@@ -31,11 +31,11 @@ function SugarCell(model)
 		--@param rate A positive number to increase the amount of sugar.
 		--@usage cell:growSugar(1.0)
 		growSugar = function(self, rate)
-            self.sugar = self.sugar + rate
-        	if self.sugar > self.maxsugar then
+			self.sugar = self.sugar + rate
+			if self.sugar > self.maxsugar then
 				self.sugar = self.maxsugar
-        	end
-    	end,
+			end
+		end,
 		--- Normal growth rule for the sugarscape model.
 		--@usage cell:normalGrowth()
 		normalGrowth = function(self)
@@ -71,7 +71,7 @@ function SugarCell(model)
 		--@param cell Another cell.
 		--@usage cell:cityBlockDistance(anothercell)
 		cityBlockDistance = function(self, cell)
-		    return math.abs(self.x - cell.x) + math.abs(self.y - cell.y)
+			return math.abs(self.x - cell.x) + math.abs(self.y - cell.y)
 		end,
 		--- Compute color of the cell according to its attrihutes.
 		--  The color will be different if it contains a SugarAgent.

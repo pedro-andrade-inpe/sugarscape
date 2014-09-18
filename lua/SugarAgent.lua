@@ -120,14 +120,14 @@ function SugarAgent (model)
 		end,
 		--- Build a social network. The neighbor connection network is a directed graph with agents 
 		--as the nodes and edges drawn to the agents who have been their neighbors.
-    	--It is constructed as follows: Imagine that agents are positioned on the sugarscape and 
-    	--that none has moved. The first agent now executes M, moves to a new site, and then
-    	--builds a list of its von Neumann neighbors, which it maintains until its next move. 
-    	--The second agent then moves and builds its list of (post-move) neighbors. 
-    	--The third agent moves and builds its list, and so on until all agents have moved. 
-    	--At this point, lines are drawn from each agent to all agents on its list. 
-    	--The resulting graph - a social network of neighbors - is redrawn after every cycle 
-    	--through the agent population.
+		--It is constructed as follows: Imagine that agents are positioned on the sugarscape and 
+		--that none has moved. The first agent now executes M, moves to a new site, and then
+		--builds a list of its von Neumann neighbors, which it maintains until its next move. 
+		--The second agent then moves and builds its list of (post-move) neighbors. 
+		--The third agent moves and builds its list, and so on until all agents have moved. 
+		--At this point, lines are drawn from each agent to all agents on its list. 
+		--The resulting graph - a social network of neighbors - is redrawn after every cycle 
+		--through the agent population.
 		--@usage agent:buildSocialNetworks()
 		buildSocialNetworks = function(self)
 			self:addSocialNetwork(SocialNetwork())

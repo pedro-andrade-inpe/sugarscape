@@ -102,10 +102,10 @@ Sugarscape = Model{
 		SugarObserver(model)
 	end,
 	check = function(model)
-	    assert(model.block.xmax > model.block.xmin)
-	    assert(model.block.ymax > model.block.ymin)
+		assert(model.block.xmax > model.block.xmin)
+		assert(model.block.ymax > model.block.ymin)
 		local blocksize = (model.block.xmax - model.block.xmin + 1)*(model.block.ymax - model.block.ymin + 1)
-	    assert(model.numAgents <= blocksize, "block not big enough to contain all agents")
+		assert(model.numAgents <= blocksize, "block not big enough to contain all agents")
 		assert(model.agentVision.min >= 1)
 		assert(model.agentVision.max >= model.agentVision.min)
 		assert(model.agentWealth.max >= model.agentWealth.min)
