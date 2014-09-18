@@ -1,5 +1,4 @@
 version = "0.4"
-depends = {"tube", "luccme"}
 package = "sugarscape"
 authors = "Gilberto Camara and Pedro Andrade"
 contact = "gilberto.camara@inpe.br, pedro.andrade@inpe.br"
