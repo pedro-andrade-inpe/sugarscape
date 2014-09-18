@@ -1,11 +1,11 @@
 --- Creates the timer and defines how the model is executed.
---@param model.pollutionStartTime Time where pollution formation will execute for the first time.
---@param model.pollutionDiffusionStartTime Time where pollution diffusion will execute for the first time.
---@param model.distFile A file name to save information about the society in a csv file. This 
---string is only the prefix of the file. It will add "_" then the current simulation time and then ".csv".
---@param model.showSocialNetworks A boolean value indicating whether the social networks will be 
---shown along the simulation.
---@usage timer = SugarTimer(model)
+-- @param model.pollutionStartTime Time where pollution formation will execute for the first time.
+-- @param model.pollutionDiffusionStartTime Time where pollution diffusion will execute for the first time.
+-- @param model.distFile A file name to save information about the society in a csv file. This 
+-- string is only the prefix of the file. It will add "_" then the current simulation time and then ".csv".
+-- @param model.showSocialNetworks A boolean value indicating whether the social networks will be 
+-- shown along the simulation.
+-- @usage timer = SugarTimer(model)
 function SugarTimer(model)
 	return Timer{
 		Event{action = function(event)

@@ -1,14 +1,14 @@
 --- Create model visualizations.
---@param model.showGiniIndex A boolean value indicating whether the SugarSociety:giniIndex()
---will be shown along the simulation.
---@param model.showNumAgents A boolean value indicating whether the number of SugarAgents 
---will be shown along the simulation.
---@param model.society A SugarSociety.
---@param model.agentColor An integer number with the value representing agents in space.
---@param model.cs A SugarCellularSpace.
---@param model.showSocialNetworks A boolean value indicating whether the social networks 
---will be shown along the simulation.
---@usage SugarObserver(model)
+-- @param model.showGiniIndex A boolean value indicating whether the SugarSociety:giniIndex()
+-- will be shown along the simulation.
+-- @param model.showNumAgents A boolean value indicating whether the number of SugarAgents 
+-- will be shown along the simulation.
+-- @param model.society A SugarSociety.
+-- @param model.agentColor An integer number with the value representing agents in space.
+-- @param model.cs A SugarCellularSpace.
+-- @param model.showSocialNetworks A boolean value indicating whether the social networks 
+-- will be shown along the simulation.
+-- @usage SugarObserver(model)
 function SugarObserver(model)
 	if model.showGiniIndex then
 		Observer{

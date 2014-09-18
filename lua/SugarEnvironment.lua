@@ -1,10 +1,10 @@
 --- Place the society of agents in the cell space.
---@param model.placementRule A string with the placement rule to be used.
---@param model.block A table with four values, xmin, ymin, xmax, and ymax indicating
+-- @param model.placementRule A string with the placement rule to be used.
+-- @param model.block A table with four values, xmin, ymin, xmax, and ymax indicating
 -- the box over which agents will be placed.
---@param model.society A SugarSociety.
---@param model.cs A SugarCellularSpace.
---@usage environment = SugarEnvironment(model)
+-- @param model.society A SugarSociety.
+-- @param model.cs A SugarCellularSpace.
+-- @usage environment = SugarEnvironment(model)
 function SugarEnvironment (model) 
 	local trajectory = Trajectory{
 		target = model.cs,

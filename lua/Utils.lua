@@ -1,9 +1,9 @@
---[[Util functions]]
+-- [[Util functions]]
 
 --- Find out if an element is one of the values of a table.
---@param element A value of any type.
---@param table A table.
---@usage isOneOf(2, {1, 2, 3, 4, 5})
+-- @param element A value of any type.
+-- @param table A table.
+-- @usage isOneOf(2, {1, 2, 3, 4, 5})
 function isOneOf(element, table)
 	for k, v in ipairs(table) do
 		if v == element then
@@ -14,9 +14,9 @@ function isOneOf(element, table)
 end
 
 --- Find path between cells of the same cellular space.
---@param cell1 A Cell.
---@param cell2 A Cell.
---@usage findStraigthPath(cell1, cell2)
+-- @param cell1 A Cell.
+-- @param cell2 A Cell.
+-- @usage findStraigthPath(cell1, cell2)
 function findStraigthPath(cell1, cell2)
 	local cs = cell1.parent
 	local path = Trajectory{target = cs, build = false}
@@ -41,8 +41,8 @@ end
 
 --- Color a cellular space according to a social network. It requires writes
 -- the values in the attribute socialNetwork of each cell.
---@param model A Sugarscape model.
---@usage colorSocialNetworks(model)
+-- @param model A Sugarscape model.
+-- @usage colorSocialNetworks(model)
 function colorSocialNetworks(model) -- TODO: Waiting for ticket #949 to remove this function
 	forEachCell(model.cs, function(cell) cell.socialNetwork = 0 end)
 

@@ -5,15 +5,15 @@ local random = Random()
 -- each time period), and vision (how many cells ahead an agent can see). 
 -- The agent's life-expectancy, metabolism and vision do not change, while age and wealth do change.
 -- All the functions of SugarAgent describe its behavior and do not have arguments.
---@param model.agentWealth A table with two elements, min and max, indicating the minimum and 
---maximum wealth of each agent in the beginning of the simulation.
---@param model.agentMetabolism A table with two elements, min and max, indicating the minimum and 
---maximum metabolism of each agent when they are created.
---@param model.agentLifeTime A table with two elements, min and max, indicating the minimum and 
---maximum lifetime of each agent when they are created.
---@param model.agentVision A table with two elements, min and max, indicating the minimum and 
---maximum vision of each agent when they are created.
---@usage SugarAgent(model)
+-- @param model.agentWealth A table with two elements, min and max, indicating the minimum and 
+-- maximum wealth of each agent in the beginning of the simulation.
+-- @param model.agentMetabolism A table with two elements, min and max, indicating the minimum and 
+-- maximum metabolism of each agent when they are created.
+-- @param model.agentLifeTime A table with two elements, min and max, indicating the minimum and 
+-- maximum lifetime of each agent when they are created.
+-- @param model.agentVision A table with two elements, min and max, indicating the minimum and 
+-- maximum vision of each agent when they are created.
+-- @usage SugarAgent(model)
 function SugarAgent (model)
 	return Agent
 	{
@@ -25,15 +25,15 @@ function SugarAgent (model)
 			self.age        = 0 
 		end,
 		--- Default movement rule, following a gradient search.
-		--Look out as far as vision pennits in the four principal lattice directions and 
-		--identify the unoccupied site(s) maximizing the search criteria
-		--If the maximum searched value appears on multiple sites then select the nearest one.
-		--Move to this site and collect all the sugar at this new position.
-		--The maximization criteria is given by the searchMaxRule (model, cell). 
-		--In most cases this function searches for the maximum amount of sugar in the cell.
-		--In some examples, this is changed to a different criteria. In simulation II-8 the
-		--search criteria is changed to the maximum sugar/pollution ratio for the cell. 
-		--@usage agent:gradienSearch()
+		-- Look out as far as vision pennits in the four principal lattice directions and 
+		-- identify the unoccupied site(s) maximizing the search criteria
+		-- If the maximum searched value appears on multiple sites then select the nearest one.
+		-- Move to this site and collect all the sugar at this new position.
+		-- The maximization criteria is given by the searchMaxRule (model, cell). 
+		-- In most cases this function searches for the maximum amount of sugar in the cell.
+		-- In some examples, this is changed to a different criteria. In simulation II-8 the
+		-- search criteria is changed to the maximum sugar/pollution ratio for the cell. 
+		-- @usage agent:gradienSearch()
 		gradientSearch = function(self)
 			local cell     = self:getCell()           -- cell where the agent is now
 			local max      = cell:searchMaxRule(cell) -- function to maximize for the search
@@ -64,13 +64,13 @@ function SugarAgent (model)
 		end,
 		--- A replacement rule, indicating that no agent will replace an agent that dies.
 		-- In this case, agents die only by losing their wealth.
-		--@usage agent:noReplacement()
+		-- @usage agent:noReplacement()
 		noReplacement = function(self)
 			if self.wealth <= 0 then self:die() end
 		end,
 		--- A Replacement rule, indicating that a new agent will replace the agent that dies.
 		-- In this case, an agent dies when it has no wealth or when it reaches a maximum age.
-		--@usage agent:ageReplacement()
+		-- @usage agent:ageReplacement()
 		ageReplacement = function(self)
 			self.age = self.age + 1 
 			if self.wealth <= 0 or self.age == self.maxage then
@@ -80,7 +80,7 @@ function SugarAgent (model)
 			end
 		end,
 		--- Eat as much sugar as it is available in the current cell.
-		--@usage agent:eatAllSugar()
+		-- @usage agent:eatAllSugar()
 		eatAllSugar = function(self)
 			local mycell = self:getCell()
 
@@ -92,7 +92,7 @@ function SugarAgent (model)
 			mycell.sugar = 0
 		end,
 		--- Eat sugar according to its metabolism.
-		--@usage agent:eatWhatNeed()
+		-- @usage agent:eatWhatNeed()
 		eatWhatNeed = function(self)
 			local mycell = self:getCell()
 			local takes = mycell.sugar
@@ -109,26 +109,26 @@ function SugarAgent (model)
 			mycell.consumption = self.metabolism
 		end,
 		--- Enter in an empty cell of the cellular space it belongs.
-		--@usage agent:enterEmptyCell()
+		-- @usage agent:enterEmptyCell()
 		enterEmptyCell = function(self)
 			self:enter(self.placement.parent:findEmptyRandomCell())
 		end,
 		--- Function used when the model does not have social networks. It does not do anything.
-		--@usage agent:noSocialNetworks()
+		-- @usage agent:noSocialNetworks()
 		noSocialNetworks = function()
 			return true
 		end,
 		--- Build a social network. The neighbor connection network is a directed graph with agents 
-		--as the nodes and edges drawn to the agents who have been their neighbors.
-		--It is constructed as follows: Imagine that agents are positioned on the sugarscape and 
-		--that none has moved. The first agent now executes M, moves to a new site, and then
-		--builds a list of its von Neumann neighbors, which it maintains until its next move. 
-		--The second agent then moves and builds its list of (post-move) neighbors. 
-		--The third agent moves and builds its list, and so on until all agents have moved. 
-		--At this point, lines are drawn from each agent to all agents on its list. 
-		--The resulting graph - a social network of neighbors - is redrawn after every cycle 
-		--through the agent population.
-		--@usage agent:buildSocialNetworks()
+		-- as the nodes and edges drawn to the agents who have been their neighbors.
+		-- It is constructed as follows: Imagine that agents are positioned on the sugarscape and 
+		-- that none has moved. The first agent now executes M, moves to a new site, and then
+		-- builds a list of its von Neumann neighbors, which it maintains until its next move. 
+		-- The second agent then moves and builds its list of (post-move) neighbors. 
+		-- The third agent moves and builds its list, and so on until all agents have moved. 
+		-- At this point, lines are drawn from each agent to all agents on its list. 
+		-- The resulting graph - a social network of neighbors - is redrawn after every cycle 
+		-- through the agent population.
+		-- @usage agent:buildSocialNetworks()
 		buildSocialNetworks = function(self)
 			self:addSocialNetwork(SocialNetwork())
 		
