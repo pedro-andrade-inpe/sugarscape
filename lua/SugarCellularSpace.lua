@@ -12,7 +12,7 @@
 -- minimum and maximum number of cells that an agent can see in each direction.
 -- @param model.seasonDuration A number indicating how long a season lasts.
 -- @usage cs = SugarCellularSpace(model)
-function SugarCellularSpace (model)
+function SugarCellularSpace(model)
 	local mfile = data(model.sugarscapeFile, "sugarscape")
 
 	local cs = CellularSpace {

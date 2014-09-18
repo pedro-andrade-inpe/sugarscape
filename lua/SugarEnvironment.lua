@@ -5,7 +5,7 @@
 -- @param model.society A SugarSociety.
 -- @param model.cs A SugarCellularSpace.
 -- @usage environment = SugarEnvironment(model)
-function SugarEnvironment (model) 
+function SugarEnvironment(model) 
 	local trajectory = Trajectory{
 		target = model.cs,
 		select = function(cell)
