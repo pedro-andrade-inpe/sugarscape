@@ -6,7 +6,7 @@
 -- @param model.replacementRule A string with the strategy to simulate how SugarAgents are replaced.
 -- @param model.socialNetworkRule A string with the strategy to create social networks along the simulation.
 -- @usage society = SugarSociety(model)
-function SugarSociety (model)
+function SugarSociety(model)
 	society = Society{
 		instance = model.agent, 
 		quantity = model.numAgents,
