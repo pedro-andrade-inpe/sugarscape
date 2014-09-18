@@ -14,7 +14,7 @@ local random = Random()
 -- @param model.agentVision A table with two elements, min and max, indicating the minimum and 
 -- maximum vision of each agent when they are created.
 -- @usage SugarAgent(model)
-function SugarAgent (model)
+function SugarAgent(model)
 	return Agent
 	{
 		init = function(self)
