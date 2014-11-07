@@ -110,7 +110,7 @@ function SugarCell(model)
 		-- The new agent movement rule modified for pollution is
 		-- Look out as far as vision permits in the four principal lattice
 		-- directions and identify the unoccupied site(s) having the maximum sugar to pollution ratio.
-		-- @usage cell:pollugionLocalDiffusion()
+		-- @usage cell:pollutionLocalDiffusion()
 		pollutionLocalDiffusion = function(self)
 			local size = cell:getNeighborhood():size()
 			local p = self.past.pollution

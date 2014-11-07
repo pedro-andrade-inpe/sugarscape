@@ -33,7 +33,7 @@ function SugarAgent(model)
 		-- In most cases this function searches for the maximum amount of sugar in the cell.
 		-- In some examples, this is changed to a different criteria. In simulation II-8 the
 		-- search criteria is changed to the maximum sugar/pollution ratio for the cell. 
-		-- @usage agent:gradienSearch()
+		-- @usage agent:gradientSearch()
 		gradientSearch = function(self)
 			local cell     = self:getCell()           -- cell where the agent is now
 			local max      = cell:searchMaxRule(cell) -- function to maximize for the search

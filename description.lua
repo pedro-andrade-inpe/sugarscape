@@ -1,8 +1,8 @@
 version = "0.4"
 package = "sugarscape"
+date = "7 November 2014"
 authors = "Gilberto Camara and Pedro Andrade"
 contact = "gilberto.camara@inpe.br, pedro.andrade@inpe.br"
-citation = "Camara and Andrade. TerraME Package sugarscape. 2014"
 content = [[
 Based on the book J. Epstein and R. Axtell, <i>Growing artificial societies: social science from the bottom up</i>.
 <p>
