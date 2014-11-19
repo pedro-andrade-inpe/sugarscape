@@ -59,39 +59,55 @@
 -- @usage model = Sugarscape()
 -- model:run()
 Sugarscape = Model{
-	sugarscapeFile           = {"sugar-map.csv"},
-	numAgents                = 10,           
-	agentWealth              = {min = 5, max = 25}, 
-	agentMetabolism          = {min = 1, max = 4},
-	agentVision              = {min = 1, max = 6},
-	agentLifetime            = {min = math.huge, max = math.huge},
-	growthRate               = 1, 
-	pollutionProductionRate  = 0,
-	pollutionConsumptionRate = 0,
-	pollutionStartTime       = math.huge,
-	diffusionStartTime       = math.huge,
-	seasonDuration           = math.huge,
-	summerGrowthRate         = 1,
-	winterGrowthRate         = 0.125,
-	block                    = {xmin = 0, xmax = math.huge, ymin = 0, ymax = math.huge},
-	placementRule            = {"random", "uniform"},
-	movementRule             = {"gradientSearch"},
-	searchMaxRule            = {"maxSugar", "maxSugarToPollution"},
-	metabolismRule           = {"eatAllSugar", "eatWhatNeed"},
-	replacementRule          = {"noReplacement", "ageReplacement"},
-	pollutionFormationRule   = {"noPollution", "pollutionProdCons"},
-	pollutionDiffusionRule   = {"noPollution", "pollutionLocalDiffusion"},
-	growbackRule             = {"normalGrowth", "immediateGrowth", "delayedGrowth", "seasonalGrowth"},
-	socialNetworkRule        = {"noSocialNetworks", "buildSocialNetworks"},
-	showNumAgents            = false,
-	showGiniIndex            = false,
-	showSocialNetworks       = false,
-	showWealthDist           = false, 
-	agentColor               = 5, 
-	socialNetworkColor       = 1,
-	showOriginalSugarscape   = true,
-	distFile                 = "sugarscape_dist",  
-	viewWait                 = 0,
+	mapFile                    = {"sugar-map.csv"},
+	distFile                   = "sugarscape_dist",  
+	agents = {
+		numAgents              = 10,           
+		wealth                 = {min = 5, max = 25}, 
+		metabolism             = {min = 1, max = 4},
+		vision                 = {min = 1, max = 6},
+		lifetime               = {min = math.huge, max = math.huge},
+		growthRate             = 1
+	},
+	pollution = {
+		active                 = false,
+		productionRate         = 0,
+		consumptionRate        = 0,
+		pollutionStartTime     = math.huge,
+		diffusionStartTime     = math.huge,
+		pollutionFormation     = {"noPollution", "pollutionProdCons"},
+		pollutionDiffusion     = {"noPollution", "pollutionLocalDiffusion"}
+	},
+	season = {
+		duration               = math.huge,
+		summerGrowthRate       = 1,
+		winterGrowthRate       = 0.125
+	},
+	block = {
+		xmin                   = 0,
+		xmax                   = math.huge,
+		ymin                   = 0,
+		ymax                   = math.huge
+	},
+	rules = {
+		placement              = {"random", "uniform"},
+		movement               = {"gradientSearch"},
+		searchMax              = {"maxSugar", "maxSugarToPollution"},
+		metabolism             = {"eatAllSugar", "eatWhatNeed"},
+		replacement            = {"noReplacement", "ageReplacement"},
+		growback               = {"normalGrowth", "immediateGrowth", "delayedGrowth", "seasonalGrowth"},
+		socialNetwork          = {"noSocialNetworks", "buildSocialNetworks"}
+	},
+	display = {
+		numAgents              = false,
+		giniIndex              = false,
+		socialNetworks         = false,
+		wealthDist             = false, 
+		showOriginalSugarscape = true,
+		agentColor             = 5, 
+		socialNetworkColor     = 1,
+		viewWait               = 0
+	},
 	setup = function(model)
 		model.cell        = SugarCell(model)
 		model.cs          = SugarCellularSpace(model)
@@ -100,6 +116,13 @@ Sugarscape = Model{
 		model.environment = SugarEnvironment(model)
 		model.timer       = SugarTimer(model)
 		SugarObserver(model)
+	end,
+	interface = function()
+		return {
+			{"mapFile", "distFile", "agents", "block"},
+			{"pollution", "season", "rules"},
+			{"display"}
+		}
 	end,
 	check = function(model)
 		assert(model.block.xmax > model.block.xmin)
