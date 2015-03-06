@@ -11,8 +11,9 @@ require("sugarscape")
 sc_II_2 = Sugarscape{
 	showNumAgents  = true,
 	showGiniIndex  = true,
-	showWealthDist = true
+	showWealthDist = true,
+	finalTime = 500
 }
 
-sc_II_2:execute(500)
+sc_II_2:execute()
 

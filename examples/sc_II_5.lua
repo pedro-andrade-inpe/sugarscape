@@ -13,8 +13,9 @@ sc_II_5 = Sugarscape{
 	growbackRule       = "normalGrowth",
 	showNumAgents      = true,
 	showSocialNetworks = true,
-	socialNetworkRule  = "buildSocialNetworks"
+	socialNetworkRule  = "buildSocialNetworks",
+	finalTime          = 500
 }
 
-sc_II_5:execute(500)
+sc_II_5:execute()
 

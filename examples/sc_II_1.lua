@@ -12,9 +12,10 @@ require("sugarscape")
 -- @name sc_II_1
 -- @class function
 sc_II_1 = Sugarscape{
-	growbackRule  = "immediateGrowth",
-	showNumAgents = true
+	rules = {growback = "immediateGrowth"},
+	display = {numAgents = true},
+	finalTime = 500
 }
 
-sc_II_1:execute(500)
+sc_II_1:execute()
 

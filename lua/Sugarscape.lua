@@ -59,44 +59,45 @@
 -- @usage model = Sugarscape()
 -- model:run()
 Sugarscape = Model{
-	mapFile                    = {"sugar-map.csv"},
-	distFile                   = "sugarscape_dist",  
-	agents = {
-		numAgents              = 10,           
-		wealth                 = {min = 5, max = 25}, 
-		metabolism             = {min = 1, max = 4},
-		vision                 = {min = 1, max = 6},
-		lifetime               = {min = math.huge, max = math.huge},
-		growthRate             = 1
-	},
+	mapFile                    = "sugar-map.csv",
+	distFile                   = "sugarscape_dist",
+	numAgents                  = Choice{min = 10},
+	agentWealth                = {min = 5, max = 25},
+	agentMetabolism            = {min = 1, max = 4},
+	agentVision                = {min = 1, max = 6},
+	agentLifetime              = {min = 5, max = math.huge},
+	growthRate                 = Choice{min = 1},
+	finalTime                  = Choice{min = 100},
 	pollution = {
 		active                 = false,
-		productionRate         = 0,
-		consumptionRate        = 0,
+		productionRate         = Choice{min = 0},
+		consumptionRate        = Choice{min = 0},
 		pollutionStartTime     = math.huge,
 		diffusionStartTime     = math.huge,
-		pollutionFormation     = {"noPollution", "pollutionProdCons"},
-		pollutionDiffusion     = {"noPollution", "pollutionLocalDiffusion"}
+		pollutionFormation     = Choice{"noPollution", "pollutionProdCons"},
+		pollutionDiffusion     = Choice{"noPollution", "pollutionLocalDiffusion"}
 	},
 	season = {
+		active                 = false,
 		duration               = math.huge,
 		summerGrowthRate       = 1,
 		winterGrowthRate       = 0.125
 	},
 	block = {
+		active                 = false,
 		xmin                   = 0,
 		xmax                   = math.huge,
 		ymin                   = 0,
 		ymax                   = math.huge
 	},
 	rules = {
-		placement              = {"random", "uniform"},
-		movement               = {"gradientSearch"},
-		searchMax              = {"maxSugar", "maxSugarToPollution"},
-		metabolism             = {"eatAllSugar", "eatWhatNeed"},
-		replacement            = {"noReplacement", "ageReplacement"},
-		growback               = {"normalGrowth", "immediateGrowth", "delayedGrowth", "seasonalGrowth"},
-		socialNetwork          = {"noSocialNetworks", "buildSocialNetworks"}
+		placement              = Choice{"random", "uniform"},
+		movement               = Choice{"gradientSearch"},
+		searchMax              = Choice{"maxSugar", "maxSugarToPollution"},
+		metabolism             = Choice{"eatAllSugar", "eatWhatNeed"},
+		replacement            = Choice{"noReplacement", "ageReplacement"},
+		growback               = Choice{"normalGrowth", "immediateGrowth", "delayedGrowth", "seasonalGrowth"},
+		socialNetwork          = Choice{"noSocialNetworks", "buildSocialNetworks"}
 	},
 	display = {
 		numAgents              = false,
@@ -104,11 +105,11 @@ Sugarscape = Model{
 		socialNetworks         = false,
 		wealthDist             = false, 
 		showOriginalSugarscape = true,
-		agentColor             = 5, 
-		socialNetworkColor     = 1,
-		viewWait               = 0
+		agentColor             = Choice{min = 1, max = 5, step = 1},
+		socialNetworkColor     = Choice{min = 1, max = 4, step = 1},
+		viewWait               = Choice{min = 0}
 	},
-	setup = function(model)
+	init = function(model)
 		model.cell        = SugarCell(model)
 		model.cs          = SugarCellularSpace(model)
 		model.agent       = SugarAgent(model)
@@ -119,25 +120,25 @@ Sugarscape = Model{
 	end,
 	interface = function()
 		return {
-			{"mapFile", "distFile", "agents", "block"},
-			{"pollution", "season", "rules"},
-			{"display"}
+			{"string", "agentWealth", "agentVision", "block"},
+			{"Choice", "rules", "season"},
+			{"display", "pollution"}
 		}
 	end,
 	check = function(model)
-		assert(model.block.xmax > model.block.xmin)
-		assert(model.block.ymax > model.block.ymin)
+		verify(model.block.xmax > model.block.xmin, "xMax should be greater than xMin.")
+		verify(model.block.ymax > model.block.ymin)
 		local blocksize = (model.block.xmax - model.block.xmin + 1)*(model.block.ymax - model.block.ymin + 1)
-		assert(model.numAgents <= blocksize, "block not big enough to contain all agents")
-		assert(model.agentVision.min >= 1)
-		assert(model.agentVision.max >= model.agentVision.min)
-		assert(model.agentWealth.max >= model.agentWealth.min)
-		assert(model.agentLifetime.max >= model.agentLifetime.min)
-		assert(model.agentMetabolism.max >= model.agentMetabolism.min)
-		assert(model.numAgents > 0)
-		assert(model.growthRate > 0)
-		assert(model.summerGrowthRate > model.winterGrowthRate)
-		assert(model.winterGrowthRate > 0)
+		verify(model.numAgents <= blocksize, "block not big enough to contain all agents")
+		verify(model.agentVision.min >= 1)
+		verify(model.agentVision.max >= model.agentVision.min)
+		verify(model.agentWealth.max >= model.agentWealth.min)
+		verify(model.agentLifetime.max >= model.agentLifetime.min)
+		verify(model.agentMetabolism.max >= model.agentMetabolism.min)
+		verify(model.numAgents > 0)
+		verify(model.growthRate > 0)
+		verify(model.season.summerGrowthRate > model.season.winterGrowthRate)
+		verify(model.season.winterGrowthRate > 0)
 	end
 }
 

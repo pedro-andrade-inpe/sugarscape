@@ -11,8 +11,9 @@ require("sugarscape")
 sc_II_7 = Sugarscape{
 	showNumAgents  = true,
 	growbackRule   = "seasonalGrowth",
-	seasonDuration = 50
+	seasonDuration = 50,
+	finalTime      = 500
 }
 
-sc_II_7:execute(500)
+sc_II_7:execute()
 

@@ -25,8 +25,9 @@ sc_II_8 = Sugarscape{
 	pollutionStartTime       = 50,
 	diffusionStartTime       = 100,
 	pollutionFormationRule   = "pollutionProdCons",
-	pollutionDiffusionRule   = "pollutionLocalDiffusion"
+	pollutionDiffusionRule   = "pollutionLocalDiffusion",
+	finalTime = 500
 } 
 
-sc_II_8:execute(500)
+sc_II_8:execute()
 

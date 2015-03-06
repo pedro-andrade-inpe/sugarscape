@@ -18,8 +18,9 @@ sc_II_6 = Sugarscape{
 	block         = {xmin = 0, xmax = 19, ymin = 30, ymax = 49},
 	placementRule = "uniform",
 	growbackRule  = "delayedGrowth",
-	agentVision   = {min = 5, max = 7}
+	agentVision   = {min = 5, max = 7},
+	finalTime     = 500
 }
 
-sc_II_6:execute(500)
+sc_II_6:execute()
 

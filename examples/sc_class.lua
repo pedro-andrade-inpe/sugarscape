@@ -7,8 +7,9 @@ sc_class = Sugarscape{
 	metabolismRule = "eatWhatNeed",
 	showNumAgents  = true,
 	showGiniIndex  = true,
-	showWealthDist = true
+	showWealthDist = true,
+	finalTime      = 500
 }
 
-sc_class:execute(500)
+sc_class:execute()
 

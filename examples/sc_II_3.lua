@@ -31,8 +31,9 @@ sc_II_3 = Sugarscape{
 	agentLifetime   = {min = 60, max = 100},
 	showNumAgents   = false,
 	showGiniIndex   = true,
-	showWealthDist  = true
+	showWealthDist  = true,
+	finalTime       = 500
 }
 
-sc_II_3:execute(500)
+sc_II_3:execute()
 
